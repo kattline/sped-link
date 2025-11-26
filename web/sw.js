@@ -1,33 +1,42 @@
-const CACHE_NAME = 'sped-link-v1';
-const OFFLINE_URL = '/index.html';
+const CACHE_NAME = 'sped-link-cache-v1';
+const OFFLINE_PAGE = '/index.html';
+const ASSETS = [
+  '/',
+  '/index.html',
+  '/styles.css',
+  '/app.js',
+  '/manifest.json',
+  '/icons/icon-192.png',
+  '/icons/icon-512.png'
+];
 
-self.addEventListener('install', (evt) => {
-  evt.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll([
-      '/', '/index.html', '/styles.css', '/app.js', '/manifest.json'
-    ]))
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
   );
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (evt) => {
-  evt.waitUntil(self.clients.claim());
+self.addEventListener('activate', event => {
+  event.waitUntil(self.clients.claim());
 });
 
-self.addEventListener('fetch', (evt) => {
-  if (evt.request.method !== 'GET') return;
-  evt.respondWith(
-    caches.match(evt.request).then((r) => r || fetch(evt.request).catch(() => caches.match(OFFLINE_URL)))
+self.addEventListener('fetch', event => {
+  // Only handle GET
+  if (event.request.method !== 'GET') return;
+  event.respondWith(
+    caches.match(event.request).then(cachedRes => {
+      if (cachedRes) return cachedRes;
+      return fetch(event.request).then(networkRes => {
+        // Optionally cache new requests
+        return caches.open(CACHE_NAME).then(cache => {
+          // avoid caching opaque requests (like third-party)
+          if (networkRes && networkRes.type === 'basic') {
+            cache.put(event.request, networkRes.clone());
+          }
+          return networkRes;
+        });
+      }).catch(() => caches.match(OFFLINE_PAGE));
+    })
   );
 });
-
-// Placeholder for background sync if implemented later
-self.addEventListener('sync', (event) => {
-  if (event.tag === 'sync-logs') {
-    event.waitUntil(syncLogsToServer());
-  }
-});
-
-async function syncLogsToServer() {
-  // advanced implementations can use IndexedDB from service worker via idb-keyval or clients.postMessage
-}

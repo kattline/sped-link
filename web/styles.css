@@ -1,0 +1,145 @@
+:root{
+  --bg: #F7FBFF;
+  --card: #FFFFFF;
+  --muted: #6B7280;
+  --accent: #2563EB;
+  --accent-2: #06B6D4;
+  --success: #10B981;
+  --danger: #EF4444;
+  --radius: 14px;
+  --glass: rgba(255,255,255,0.7);
+  --shadow: 0 8px 24px rgba(16,24,40,0.08);
+  font-synthesis: none;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, #F7FBFF 0%, #F1F8FF 100%);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:20px;
+}
+
+/* header */
+.app-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  background:linear-gradient(90deg,var(--accent),#60A5FA);
+  color:white;
+  padding:18px;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  margin-bottom:18px;
+}
+.app-header h1{margin:0;font-size:20px}
+.app-header .tag{opacity:0.95;margin:0;font-size:13px}
+
+/* container layout */
+.container{
+  max-width:1000px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns: 360px 1fr 360px;
+  gap:18px;
+}
+
+/* student card */
+.student-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:16px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  box-shadow:var(--shadow);
+}
+.student-avatar{
+  width:68px;height:68px;border-radius:12px;object-fit:cover;background:#EEF2FF;padding:8px
+}
+.student-info h2{margin:0;font-size:16px}
+.student-info p{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+/* log section */
+.log-section{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.log-section h3{margin:0 0 12px}
+.btn-grid{
+  display:flex;
+  gap:10px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+.log-btn{
+  flex:1 1 110px;
+  padding:12px 14px;
+  border-radius:12px;
+  border:none;
+  font-size:15px;
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+.log-btn:active{transform:translateY(1px)}
+.log-btn.positive{background:linear-gradient(180deg,#ECFCCB,#BBF7D0); color:#065F46}
+.log-btn.neutral{background:linear-gradient(180deg,#FEF3C7,#FDE68A); color:#92400E}
+.log-btn.negative{background:linear-gradient(180deg,#FECACA,#FCA5A5); color:#7F1D1D}
+
+/* text area */
+textarea#remarks{
+  width:100%;
+  min-height:92px;
+  margin-top:8px;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #E6EEF8;
+  background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,250,0.6));
+  resize:vertical;
+  font-size:14px;
+  color:#0B1220;
+}
+
+/* save btn */
+.save-btn{
+  margin-top:12px;
+  width:100%;
+  padding:12px;
+  background:linear-gradient(90deg,var(--accent),#60A5FA);
+  color:white;border:none;border-radius:12px;font-weight:600;font-size:15px;
+  cursor:pointer;box-shadow:0 10px 26px rgba(59,130,246,0.16);
+}
+
+/* history */
+.history-section{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow);
+  height:fit-content;
+}
+.history-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.log-item{
+  display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:10px;background:#FBFDFF;border:1px solid #EEF6FF;
+}
+.log-item .left{display:flex;gap:12px;align-items:center}
+.log-item .bubble{padding:10px;border-radius:10px;font-weight:600}
+.log-item .time{font-size:12px;color:var(--muted)}
+
+/* install banner */
+.install-banner{
+  position:fixed;right:18px;bottom:18px;background:var(--card);padding:12px;border-radius:12px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:center
+}
+.hidden{display:none}
+
+/* responsive */
+@media (max-width:1000px){
+  .container{grid-template-columns:1fr; padding-bottom:80px}
+  .student-card{order:-1}
+}

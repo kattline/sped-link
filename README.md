@@ -1,26 +1,35 @@
-SPED-Link PWA - Quick Setup
+SPED-Link PWA — Quick Deploy
 
-1) Web (static)
-- Place web/* files on a static server (e.g., serve with `npx http-server web` or GitHub Pages).
+1) Files:
+   - index.html
+   - app.js
+   - styles.css
+   - sw.js
+   - manifest.json
+   - vercel.json
+   - icons/*
 
-2) Server (optional demo)
-- cd server
-- npm install
-- node server.js
-- Server runs at http://localhost:3000
+2) Firebase:
+   - Create Firebase project (Realtime Database).
+   - Copy firebaseConfig into app.js.
+   - In Realtime DB rules (for testing), set:
+     {
+       "rules": {
+         "logs": { ".read": true, ".write": true }
+       }
+     }
+   - (Tighten rules for production with auth)
 
-3) Firebase (optional - recommended)
-- Create Firebase project.
-- Enable Realtime Database.
-- Replace firebaseConfig in web/app.js with your project's config.
-- Set rules (see README)
-- If using Firebase, the client automatically syncs to Firebase when online.
+3) Deploy:
+   Option A (recommended): Deploy all files at project root on Vercel (connect Git repo or upload). Vercel will serve index.html.
+   Option B: Use any static host (Netlify, GitHub Pages). Ensure service worker and manifest are served from root.
 
-4) Install & test
-- Open the site in Chrome (desktop or Android) -> you should see install banner when `beforeinstallprompt` is available.
-- Use Teacher buttons offline; they queue locally and sync when online.
-- Parent view shows realtime updates from Firebase.
+4) Verify:
+   - Open site in Chrome (desktop or Android).
+   - Click the log buttons offline; reconnect — check Firebase DB receives entries.
+   - Install prompt: if supported, you'll see the banner (or browser will show native install option).
 
-Notes:
-- iOS Safari requires manual "Add to Home Screen".
-- For push notifications, implement FCM + VAPID + Service Worker push subscription.
+5) Notes:
+   - iOS has limited PWA support; manual Add to Home Screen needed.
+   - For production, add Firebase Authentication and secure DB rules.
+   - For push notifications, add Firebase Cloud Messaging + service worker push subscription (requires VAPID keys).
