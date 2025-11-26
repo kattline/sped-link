@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SPED-Link — Teacher / Parent</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/styles.css">
+  <meta name="theme-color" content="#4F46E5">
+</head>
+<body>
+  <header>
+    <h1>SPED-Link</h1>
+    <p>Holistic daily monitoring — Teacher & Parent</p>
+  </header>
+
+  <main>
+    <section id="teacher">
+      <h2>Teacher — One-tap logging</h2>
+      <div class="icons">
+        <button data-event="ate" class="icon">🥪 Ate</button>
+        <button data-event="focused" class="icon">🧠 Focused</button>
+        <button data-event="tantrum" class="icon">😡 Tantrum</button>
+        <button data-event="happy" class="icon">😊 Happy</button>
+      </div>
+      <div class="meta">
+        <label>Student ID: <input id="teacherStudentId" value="student-001"></label>
+      </div>
+      <div id="teacherToast" class="toast hidden"></div>
+    </section>
+
+    <hr>
+
+    <section id="parent">
+      <h2>Parent — Today’s summary</h2>
+      <label>Student ID: <input id="parentStudentId" value="student-001"></label>
+      <button id="refreshSummary">Get Summary</button>
+      <div id="summary"></div>
+    </section>
+  </main>
+
+  <div id="installBanner" class="install-banner hidden">
+    <p>Install SPED-Link to get app-like experience and notifications.</p>
+    <button id="installBtn">Install</button>
+    <button id="dismissInstall">Maybe later</button>
+  </div>
+
+  <!-- Firebase SDKs (replace with current versions if desired) -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

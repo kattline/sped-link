@@ -1,0 +1,11 @@
+{
+  "name": "sped-link-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "lowdb": "^1.0.0"
+  }
+}

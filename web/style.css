@@ -1,0 +1,7 @@
+body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:0;padding:16px;background:#fff}
+header{background:#4F46E5;color:#fff;padding:12px;border-radius:8px}
+.icons{display:flex;gap:8px;margin:12px 0}
+.icon{font-size:18px;padding:10px 14px;border-radius:8px;border:1px solid #ddd;background:#fafafa}
+.toast{position:fixed;bottom:16px;left:16px;padding:8px 12px;background:#222;color:#fff;border-radius:6px}
+.hidden{display:none}
+.install-banner{position:fixed;right:12px;bottom:12px;background:#fff;border:1px solid #ccc;padding:12px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
