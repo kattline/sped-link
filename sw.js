@@ -3,7 +3,7 @@ const OFFLINE_PAGE = '/index.html';
 const ASSETS = [
   '/',
   '/index.html',
-  '/styles.css',
+  '/style.css',
   '/app.js',
   '/manifest.json',
   '/icons/icon-192.png',
