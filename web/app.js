@@ -4,16 +4,16 @@ const STORE_LOGS = 'logs';
 let db;
 let deferredPrompt;
 
-// --- Firebase init (REPLACE with your config) ---
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCJ2BQVolPgeFsu6rw85VXbihA3avwDokU",
+  authDomain: "sped-link.firebaseapp.com",
+  projectId: "sped-link",
+  storageBucket: "sped-link.firebasestorage.app",
+  messagingSenderId: "421020848346",
+  appId: "1:421020848346:web:7f5fb15dcad42b2ec615e3",
+  measurementId: "G-EBS9KXRM4Z"
 };
+
 firebase.initializeApp(firebaseConfig);
 const rtdb = firebase.database();
 
